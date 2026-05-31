@@ -1,0 +1,2 @@
+route_id,trip_id,shape_id
+route_1,trip_1,shape_1
