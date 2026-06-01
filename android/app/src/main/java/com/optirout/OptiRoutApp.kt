@@ -81,6 +81,13 @@ private data class ModalOption(
     val restricaoModal: String? = null,
 )
 
+private data class RouteSegmentInfo(
+    val titulo: String,
+    val tempoHoras: Double,
+    val custo: Double,
+    val distanciaKm: Double,
+)
+
 private val modalOptions = listOf(
     ModalOption("multimodal", "Multimodal", "walk", null),
     ModalOption("walk", "A pé", "walk", "walk"),
@@ -107,6 +114,7 @@ fun OptiRoutApp() {
     var valorGasto by remember { mutableStateOf("R$ --") }
     var tempoMedio by remember { mutableStateOf("--") }
     var distanciaTotal by remember { mutableStateOf("-- km") }
+    var segmentosRota by remember { mutableStateOf(emptyList<RouteSegmentInfo>()) }
     var routePoints by remember {
         mutableStateOf(
             listOf(
@@ -175,6 +183,7 @@ fun OptiRoutApp() {
                 tempoMedio = tempoMedio,
                 distanciaTotal = distanciaTotal,
             )
+            RouteSegmentsSection(segmentos = segmentosRota)
 
             Button(
                 onClick = {
@@ -188,11 +197,13 @@ fun OptiRoutApp() {
                             val tempoTotal = resumo?.optDouble("tempo_total", 0.0) ?: 0.0
                             val custoTotal = resumo?.optDouble("custo_total", 0.0) ?: 0.0
                             val distancia = resumo?.optDouble("distancia_total", 0.0) ?: 0.0
-                            val segmentos = response.optJSONArray("segments")?.length() ?: 1
+                            val segmentosJson = response.optJSONArray("segments")
+                            val segmentos = segmentosJson?.length() ?: 0
 
                             valorGasto = "R$ %.2f".format(custoTotal)
-                            tempoMedio = if (segmentos > 0) "%.2f min/trecho".format(tempoTotal / segmentos) else "--"
+                            tempoMedio = if (segmentos > 0) "%.2f min/trecho".format((tempoTotal / segmentos) * 60.0) else "--"
                             distanciaTotal = "%.2f km".format(distancia)
+                            segmentosRota = parseRouteSegments(segmentosJson)
                             routePoints = parseRoutePoints(response)
                             Toast.makeText(ctx, "Calculo concluido", Toast.LENGTH_SHORT).show()
                         } catch (ex: Exception) {
@@ -240,7 +251,7 @@ private fun executeRouteCalculation(selectedModal: ModalOption): JSONObject {
         }
     }
 
-    val url = URL("http://127.0.0.1:8000/api/calculate")
+    val url = URL("http://10.0.2.2:8000/api/calculate")
     val conn = (url.openConnection() as HttpURLConnection).apply {
         requestMethod = "POST"
         doOutput = true
@@ -308,6 +319,31 @@ private fun parseRoutePoints(response: JSONObject): List<Pair<Double, Double>> {
     return if (points.isEmpty()) fallbackRoutePoints() else points
 }
 
+private fun parseRouteSegments(segments: JSONArray?): List<RouteSegmentInfo> {
+    if (segments == null || segments.length() == 0) return emptyList()
+
+    return buildList {
+        for (i in 0 until segments.length()) {
+            val segment = segments.optJSONObject(i) ?: continue
+            val titulo = when {
+                segment.optString("servico").isNotBlank() -> segment.optString("servico")
+                segment.optString("meio").isNotBlank() -> segment.optString("meio")
+                segment.optString("modo").isNotBlank() -> segment.optString("modo")
+                else -> "Segmento ${i + 1}"
+            }
+
+            add(
+                RouteSegmentInfo(
+                    titulo = titulo,
+                    tempoHoras = segment.optDouble("tempo", 0.0),
+                    custo = segment.optDouble("custo", 0.0),
+                    distanciaKm = segment.optDouble("distancia", 0.0),
+                ),
+            )
+        }
+    }
+}
+
 private fun fallbackRoutePoints(): List<Pair<Double, Double>> = listOf(
     FIXED_ORIGIN_LAT to FIXED_ORIGIN_LON,
     FIXED_DEST_LAT to FIXED_DEST_LON,
@@ -319,6 +355,7 @@ private data class MapProjection(
     val zoom: Int,
 )
 
+@SuppressLint("UnusedBoxWithConstraintsScope")
 @Composable
 private fun RouteMapCard(routePoints: List<Pair<Double, Double>>) {
     var zoomLevel by remember(routePoints) { mutableStateOf(computeInitialZoom(routePoints)) }
@@ -612,6 +649,53 @@ private fun RouteMetricsCard(modalEscolhido: String, valorGasto: String, tempoMe
             MetricRow(label = "Valor gasto", value = valorGasto)
             MetricRow(label = "Tempo medio", value = tempoMedio)
             MetricRow(label = "Distancia total", value = distanciaTotal)
+        }
+    }
+}
+
+@Composable
+private fun RouteSegmentsSection(segmentos: List<RouteSegmentInfo>) {
+    if (segmentos.isEmpty()) return
+
+    Column(verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Text(
+            text = "Segmentos da rota",
+            style = MaterialTheme.typography.titleMedium,
+        )
+
+        segmentos.forEachIndexed { index, segmento ->
+            RouteSegmentCard(
+                numero = index + 1,
+                segmento = segmento,
+            )
+        }
+    }
+}
+
+@Composable
+private fun RouteSegmentCard(numero: Int, segmento: RouteSegmentInfo) {
+    Card(
+        modifier = Modifier.fillMaxWidth(),
+        shape = RoundedCornerShape(24.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceVariant),
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 18.dp, vertical = 14.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+        ) {
+            Text(
+                text = "Segmento $numero",
+                style = MaterialTheme.typography.titleSmall,
+                fontWeight = FontWeight.SemiBold,
+            )
+            Text(
+                text = segmento.titulo,
+                style = MaterialTheme.typography.bodyMedium,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+            )
+            MetricRow(label = "Tempo", value = "%.2f min".format(segmento.tempoHoras * 60.0))
+            MetricRow(label = "Custo", value = "R$ %.2f".format(segmento.custo))
+            MetricRow(label = "Distancia", value = "%.2f km".format(segmento.distanciaKm))
         }
     }
 }
