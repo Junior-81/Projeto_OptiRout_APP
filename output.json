@@ -1,8 +1,8 @@
 {
   "edges": [
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0623949,
         -34.8737916
@@ -12,12 +12,12 @@
         -34.8738494
       ],
       "distancia": 0.0066,
-      "tempo": 0.0004,
-      "custo": 0.0,
-      "esforco": 0.0109,
-      "risco": 0.0002,
-      "peso": 0.001,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0003,
+      "custo": 0.01,
+      "esforco": 0.0,
+      "risco": 0.0003,
+      "peso": 0.0007,
+      "velocidade_media_kmh": 30.0,
       "geometry": [
         [
           -8.0623949,
@@ -30,8 +30,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0623784,
         -34.8738494
@@ -41,12 +41,12 @@
         -34.8765324
       ],
       "distancia": 0.3077,
-      "tempo": 0.0169,
-      "custo": 0.0,
-      "esforco": 0.5077,
-      "risco": 0.0102,
-      "peso": 0.048,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0135,
+      "custo": 0.29,
+      "esforco": 0.0,
+      "risco": 0.0122,
+      "peso": 0.0353,
+      "velocidade_media_kmh": 30.0,
       "geometry": [
         [
           -8.0623784,
@@ -59,8 +59,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0616035,
         -34.8765324
@@ -70,12 +70,12 @@
         -34.8769886
       ],
       "distancia": 0.0513,
-      "tempo": 0.0028,
-      "custo": 0.0,
-      "esforco": 0.0847,
-      "risco": 0.0017,
-      "peso": 0.008,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0023,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.002,
+      "peso": 0.0058,
+      "velocidade_media_kmh": 30.0,
       "geometry": [
         [
           -8.0616035,
@@ -88,8 +88,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0615094,
         -34.8769886
@@ -99,12 +99,12 @@
         -34.8771147
       ],
       "distancia": 0.0173,
-      "tempo": 0.001,
-      "custo": 0.0,
-      "esforco": 0.0286,
-      "risco": 0.0006,
-      "peso": 0.0026,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0005,
+      "custo": 0.02,
+      "esforco": 0.0,
+      "risco": 0.0007,
+      "peso": 0.0017,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0615094,
@@ -117,8 +117,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0616023,
         -34.8771147
@@ -128,12 +128,12 @@
         -34.8770634
       ],
       "distancia": 0.0563,
-      "tempo": 0.0031,
-      "custo": 0.0,
-      "esforco": 0.0929,
-      "risco": 0.0019,
-      "peso": 0.0087,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0015,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.0022,
+      "peso": 0.0055,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0616023,
@@ -146,8 +146,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0621061,
         -34.8770634
@@ -157,12 +157,12 @@
         -34.8770024
       ],
       "distancia": 0.084,
-      "tempo": 0.0046,
-      "custo": 0.0,
-      "esforco": 0.1387,
-      "risco": 0.0028,
-      "peso": 0.0131,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0022,
+      "custo": 0.08,
+      "esforco": 0.0,
+      "risco": 0.0033,
+      "peso": 0.0083,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0621061,
@@ -175,8 +175,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0628594,
         -34.8770024
@@ -186,12 +186,12 @@
         -34.8769566
       ],
       "distancia": 0.0563,
-      "tempo": 0.0031,
-      "custo": 0.0,
-      "esforco": 0.0929,
-      "risco": 0.0019,
-      "peso": 0.0087,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0015,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.0022,
+      "peso": 0.0055,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0628594,
@@ -204,8 +204,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0633636,
         -34.8769566
@@ -215,12 +215,12 @@
         -34.8768645
       ],
       "distancia": 0.0918,
-      "tempo": 0.005,
-      "custo": 0.0,
-      "esforco": 0.1515,
-      "risco": 0.003,
-      "peso": 0.0143,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0024,
+      "custo": 0.09,
+      "esforco": 0.0,
+      "risco": 0.0036,
+      "peso": 0.0091,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0633636,
@@ -233,8 +233,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0641842,
         -34.8768645
@@ -244,12 +244,12 @@
         -34.8767652
       ],
       "distancia": 0.1021,
-      "tempo": 0.0056,
-      "custo": 0.0,
-      "esforco": 0.1685,
-      "risco": 0.0034,
-      "peso": 0.0159,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0027,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.004,
+      "peso": 0.0101,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0641842,
@@ -262,8 +262,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0650973,
         -34.8767652
@@ -273,12 +273,12 @@
         -34.8767308
       ],
       "distancia": 0.0433,
-      "tempo": 0.0024,
-      "custo": 0.0,
-      "esforco": 0.0714,
-      "risco": 0.0014,
-      "peso": 0.0067,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0011,
+      "custo": 0.04,
+      "esforco": 0.0,
+      "risco": 0.0017,
+      "peso": 0.0042,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0650973,
@@ -291,8 +291,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0654851,
         -34.8767308
@@ -302,12 +302,12 @@
         -34.8766951
       ],
       "distancia": 0.0693,
-      "tempo": 0.0038,
-      "custo": 0.0,
-      "esforco": 0.1144,
-      "risco": 0.0023,
-      "peso": 0.0108,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0018,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0027,
+      "peso": 0.0068,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0654851,
@@ -320,8 +320,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0661077,
         -34.8766951
@@ -331,12 +331,12 @@
         -34.8764623
       ],
       "distancia": 0.0258,
-      "tempo": 0.0014,
-      "custo": 0.0,
-      "esforco": 0.0426,
-      "risco": 0.0009,
-      "peso": 0.004,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0007,
+      "custo": 0.02,
+      "esforco": 0.0,
+      "risco": 0.001,
+      "peso": 0.0025,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0661077,
@@ -349,8 +349,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.066082,
         -34.8764623
@@ -360,12 +360,12 @@
         -34.8762466
       ],
       "distancia": 0.0275,
-      "tempo": 0.0015,
-      "custo": 0.0,
-      "esforco": 0.0454,
-      "risco": 0.0009,
-      "peso": 0.0042,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0007,
+      "custo": 0.03,
+      "esforco": 0.0,
+      "risco": 0.0011,
+      "peso": 0.0027,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.066082,
@@ -378,8 +378,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.066202,
         -34.8762466
@@ -389,12 +389,12 @@
         -34.8760814
       ],
       "distancia": 0.0657,
-      "tempo": 0.0036,
-      "custo": 0.0,
-      "esforco": 0.1084,
-      "risco": 0.0022,
-      "peso": 0.0102,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0017,
+      "custo": 0.06,
+      "esforco": 0.0,
+      "risco": 0.0026,
+      "peso": 0.0065,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.066202,
@@ -407,8 +407,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0667596,
         -34.8760814
@@ -418,12 +418,12 @@
         -34.8760942
       ],
       "distancia": 0.0756,
-      "tempo": 0.0042,
-      "custo": 0.0,
-      "esforco": 0.1248,
-      "risco": 0.0025,
-      "peso": 0.0118,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.002,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.003,
+      "peso": 0.0075,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0667596,
@@ -436,8 +436,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0673927,
         -34.8760942
@@ -447,12 +447,12 @@
         -34.8764075
       ],
       "distancia": 0.1378,
-      "tempo": 0.0076,
-      "custo": 0.0,
-      "esforco": 0.2274,
-      "risco": 0.0045,
-      "peso": 0.0215,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0036,
+      "custo": 0.13,
+      "esforco": 0.0,
+      "risco": 0.0055,
+      "peso": 0.0136,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0673927,
@@ -465,8 +465,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0685924,
         -34.8764075
@@ -476,12 +476,12 @@
         -34.8772781
       ],
       "distancia": 0.2397,
-      "tempo": 0.0132,
-      "custo": 0.0,
-      "esforco": 0.3955,
-      "risco": 0.0079,
-      "peso": 0.0374,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0063,
+      "custo": 0.22,
+      "esforco": 0.0,
+      "risco": 0.0095,
+      "peso": 0.0238,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0685924,
@@ -494,8 +494,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0705667,
         -34.8772781
@@ -505,12 +505,12 @@
         -34.877625
       ],
       "distancia": 0.0866,
-      "tempo": 0.0048,
-      "custo": 0.0,
-      "esforco": 0.1428,
-      "risco": 0.0029,
-      "peso": 0.0135,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0023,
+      "custo": 0.08,
+      "esforco": 0.0,
+      "risco": 0.0034,
+      "peso": 0.0085,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0705667,
@@ -523,8 +523,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0712652,
         -34.877625
@@ -534,12 +534,12 @@
         -34.8780495
       ],
       "distancia": 0.0704,
-      "tempo": 0.0039,
-      "custo": 0.0,
-      "esforco": 0.1162,
-      "risco": 0.0023,
-      "peso": 0.0109,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0019,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0028,
+      "peso": 0.0069,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0712652,
@@ -552,8 +552,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0717087,
         -34.8780495
@@ -563,12 +563,12 @@
         -34.8789101
       ],
       "distancia": 0.1003,
-      "tempo": 0.0055,
-      "custo": 0.0,
-      "esforco": 0.1655,
-      "risco": 0.0033,
-      "peso": 0.0156,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0026,
+      "custo": 0.09,
+      "esforco": 0.0,
+      "risco": 0.004,
+      "peso": 0.0099,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0717087,
@@ -581,8 +581,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0719999,
         -34.8789101
@@ -592,12 +592,12 @@
         -34.8801796
       ],
       "distancia": 0.1591,
-      "tempo": 0.0087,
-      "custo": 0.0,
-      "esforco": 0.2625,
-      "risco": 0.0052,
-      "peso": 0.0248,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0042,
+      "custo": 0.15,
+      "esforco": 0.0,
+      "risco": 0.0063,
+      "peso": 0.0158,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0719999,
@@ -610,8 +610,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0719005,
         -34.8801796
@@ -621,12 +621,12 @@
         -34.8836566
       ],
       "distancia": 0.4847,
-      "tempo": 0.0267,
-      "custo": 0.0,
-      "esforco": 0.7998,
-      "risco": 0.016,
-      "peso": 0.0757,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.016,
+      "custo": 0.45,
+      "esforco": 0.0,
+      "risco": 0.0192,
+      "peso": 0.051,
+      "velocidade_media_kmh": 40.0,
       "geometry": [
         [
           -8.0719005,
@@ -639,8 +639,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0741903,
         -34.8836566
@@ -650,12 +650,12 @@
         -34.887184
       ],
       "distancia": 0.4534,
-      "tempo": 0.0249,
-      "custo": 0.0,
-      "esforco": 0.7481,
-      "risco": 0.015,
-      "peso": 0.0708,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.015,
+      "custo": 0.43,
+      "esforco": 0.0,
+      "risco": 0.018,
+      "peso": 0.0477,
+      "velocidade_media_kmh": 40.0,
       "geometry": [
         [
           -8.0741903,
@@ -668,8 +668,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0746247,
         -34.887184
@@ -679,12 +679,12 @@
         -34.8878576
       ],
       "distancia": 0.0797,
-      "tempo": 0.0044,
-      "custo": 0.0,
-      "esforco": 0.1315,
-      "risco": 0.0026,
-      "peso": 0.0124,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0021,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0032,
+      "peso": 0.0079,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0746247,
@@ -697,8 +697,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0748878,
         -34.8878576
@@ -708,12 +708,12 @@
         -34.8890573
       ],
       "distancia": 0.1416,
-      "tempo": 0.0078,
-      "custo": 0.0,
-      "esforco": 0.2336,
-      "risco": 0.0047,
-      "peso": 0.0221,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0037,
+      "custo": 0.13,
+      "esforco": 0.0,
+      "risco": 0.0056,
+      "peso": 0.014,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0748878,
@@ -726,8 +726,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0753468,
         -34.8890573
@@ -737,12 +737,12 @@
         -34.8904098
       ],
       "distancia": 0.1958,
-      "tempo": 0.0108,
-      "custo": 0.0,
-      "esforco": 0.3231,
-      "risco": 0.0065,
-      "peso": 0.0305,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0052,
+      "custo": 0.18,
+      "esforco": 0.0,
+      "risco": 0.0078,
+      "peso": 0.0194,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0753468,
@@ -755,8 +755,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0763399,
         -34.8904098
@@ -766,12 +766,12 @@
         -34.8911678
       ],
       "distancia": 0.127,
-      "tempo": 0.007,
-      "custo": 0.0,
-      "esforco": 0.2095,
-      "risco": 0.0042,
-      "peso": 0.0198,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0034,
+      "custo": 0.12,
+      "esforco": 0.0,
+      "risco": 0.005,
+      "peso": 0.0126,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0763399,
@@ -784,8 +784,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.077176,
         -34.8911678
@@ -795,12 +795,12 @@
         -34.8920256
       ],
       "distancia": 0.1038,
-      "tempo": 0.0057,
-      "custo": 0.0,
-      "esforco": 0.1713,
-      "risco": 0.0034,
-      "peso": 0.0162,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0027,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0041,
+      "peso": 0.0103,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.077176,
@@ -813,8 +813,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0775643,
         -34.8920256
@@ -824,12 +824,12 @@
         -34.8920541
       ],
       "distancia": 0.0034,
-      "tempo": 0.0002,
+      "tempo": 0.0001,
       "custo": 0.0,
-      "esforco": 0.0057,
+      "esforco": 0.0,
       "risco": 0.0001,
-      "peso": 0.0005,
-      "velocidade_media_kmh": 20.0,
+      "peso": 0.0003,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0775643,
@@ -842,8 +842,8 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0775768,
         -34.8920541
@@ -853,12 +853,12 @@
         -34.8925714
       ],
       "distancia": 0.0628,
-      "tempo": 0.0035,
-      "custo": 0.0,
-      "esforco": 0.1036,
-      "risco": 0.0021,
-      "peso": 0.0097,
-      "velocidade_media_kmh": 20.0,
+      "tempo": 0.0017,
+      "custo": 0.06,
+      "esforco": 0.0,
+      "risco": 0.0025,
+      "peso": 0.0062,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0775768,
@@ -871,415 +871,1303 @@
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0778142,
         -34.8925714
       ],
       "destino": [
-        -8.0778183,
-        -34.8926791
+        -8.0779059,
+        -34.8926452
       ],
-      "distancia": 0.0119,
-      "tempo": 0.0007,
-      "custo": 0.0,
-      "esforco": 0.0196,
-      "risco": 0.0004,
-      "peso": 0.0018,
-      "velocidade_media_kmh": 20.0,
+      "distancia": 0.013,
+      "tempo": 0.0003,
+      "custo": 0.01,
+      "esforco": 0.0,
+      "risco": 0.0005,
+      "peso": 0.0012,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
           -8.0778142,
           -34.8925714
         ],
         [
-          -8.0778183,
-          -34.8926791
+          -8.0779059,
+          -34.8926452
         ]
       ]
     },
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
-        -8.0778183,
-        -34.8926791
+        -8.0779059,
+        -34.8926452
       ],
       "destino": [
-        -8.0779261,
-        -34.8929778
+        -8.0804011,
+        -34.8924138
       ],
-      "distancia": 0.035,
-      "tempo": 0.0019,
-      "custo": 0.0,
-      "esforco": 0.0578,
-      "risco": 0.0012,
-      "peso": 0.0054,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0778183,
-          -34.8926791
-        ],
-        [
-          -8.0779261,
-          -34.8929778
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0779261,
-        -34.8929778
-      ],
-      "destino": [
-        -8.078002,
-        -34.8933835
-      ],
-      "distancia": 0.0456,
-      "tempo": 0.0025,
-      "custo": 0.0,
-      "esforco": 0.0752,
-      "risco": 0.0015,
-      "peso": 0.0071,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0779261,
-          -34.8929778
-        ],
-        [
-          -8.078002,
-          -34.8933835
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.078002,
-        -34.8933835
-      ],
-      "destino": [
-        -8.0781403,
-        -34.8938915
-      ],
-      "distancia": 0.058,
-      "tempo": 0.0032,
-      "custo": 0.0,
-      "esforco": 0.0957,
-      "risco": 0.0019,
-      "peso": 0.009,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.078002,
-          -34.8933835
-        ],
-        [
-          -8.0781403,
-          -34.8938915
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0781403,
-        -34.8938915
-      ],
-      "destino": [
-        -8.0780484,
-        -34.8939214
-      ],
-      "distancia": 0.0107,
-      "tempo": 0.0006,
-      "custo": 0.0,
-      "esforco": 0.0177,
-      "risco": 0.0004,
-      "peso": 0.0016,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0781403,
-          -34.8938915
-        ],
-        [
-          -8.0780484,
-          -34.8939214
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0780484,
-        -34.8939214
-      ],
-      "destino": [
-        -8.0782711,
-        -34.8945644
-      ],
-      "distancia": 0.075,
-      "tempo": 0.0041,
-      "custo": 0.0,
-      "esforco": 0.1237,
-      "risco": 0.0025,
-      "peso": 0.0117,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0780484,
-          -34.8939214
-        ],
-        [
-          -8.0782711,
-          -34.8945644
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0782711,
-        -34.8945644
-      ],
-      "destino": [
-        -8.0784798,
-        -34.8951671
-      ],
-      "distancia": 0.0703,
-      "tempo": 0.0039,
-      "custo": 0.0,
-      "esforco": 0.116,
-      "risco": 0.0023,
-      "peso": 0.0109,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0782711,
-          -34.8945644
-        ],
-        [
-          -8.0784798,
-          -34.8951671
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0784798,
-        -34.8951671
-      ],
-      "destino": [
-        -8.0787919,
-        -34.895084
-      ],
-      "distancia": 0.0359,
-      "tempo": 0.002,
-      "custo": 0.0,
-      "esforco": 0.0592,
-      "risco": 0.0012,
-      "peso": 0.0055,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0784798,
-          -34.8951671
-        ],
-        [
-          -8.0787919,
-          -34.895084
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0787919,
-        -34.895084
-      ],
-      "destino": [
-        -8.0791136,
-        -34.8949839
-      ],
-      "distancia": 0.0374,
-      "tempo": 0.0021,
-      "custo": 0.0,
-      "esforco": 0.0618,
-      "risco": 0.0012,
-      "peso": 0.0058,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0787919,
-          -34.895084
-        ],
-        [
-          -8.0791136,
-          -34.8949839
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0791136,
-        -34.8949839
-      ],
-      "destino": [
-        -8.0794535,
-        -34.8948803
-      ],
-      "distancia": 0.0395,
-      "tempo": 0.0022,
-      "custo": 0.0,
-      "esforco": 0.0651,
-      "risco": 0.0013,
-      "peso": 0.0061,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0791136,
-          -34.8949839
-        ],
-        [
-          -8.0794535,
-          -34.8948803
-        ]
-      ]
-    },
-    {
-      "modo": "bike",
-      "meio": "bike",
-      "origem": [
-        -8.0794535,
-        -34.8948803
-      ],
-      "destino": [
-        -8.0797872,
-        -34.894768
-      ],
-      "distancia": 0.0391,
-      "tempo": 0.0022,
-      "custo": 0.0,
-      "esforco": 0.0645,
-      "risco": 0.0013,
-      "peso": 0.006,
-      "velocidade_media_kmh": 20.0,
-      "geometry": [
-        [
-          -8.0794535,
-          -34.8948803
-        ],
-        [
-          -8.0797872,
-          -34.894768
-        ]
-      ]
-    },
-    {
-      "modo": "walk",
-      "meio": "walk",
-      "origem": [
-        -8.0797872,
-        -34.894768
-      ],
-      "destino": [
-        -8.08,
-        -34.895
-      ],
-      "distancia": 0.0348,
-      "tempo": 0.0077,
-      "custo": 0.0,
-      "esforco": 0.1915,
-      "risco": 0.001,
-      "peso": 0.0145,
-      "velocidade_media_kmh": 5.0,
-      "geometry": [
-        [
-          -8.0797872,
-          -34.894768
-        ],
-        [
-          -8.08,
-          -34.895
-        ]
-      ]
-    },
-    {
-      "modo": "bus",
-      "meio": "bus",
-      "origem": [
-        -8.08,
-        -34.895
-      ],
-      "destino": [
-        -8.1178,
-        -34.9002
-      ],
-      "distancia": 4.242,
-      "tempo": 0.1866,
-      "custo": 4.5,
+      "distancia": 0.2983,
+      "tempo": 0.0079,
+      "custo": 0.28,
       "esforco": 0.0,
-      "risco": 0.084,
-      "peso": 0.4538,
-      "velocidade_media_kmh": 25.0,
-      "linha": "1 - Rota Teste Recife",
-      "gtfs_shape_id": "shape_1",
-      "validacao_gtfs": true,
+      "risco": 0.0118,
+      "peso": 0.0296,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
-          -8.0476,
-          -34.877
+          -8.0779059,
+          -34.8926452
         ],
         [
-          -8.05,
-          -34.88
-        ],
-        [
-          -8.055,
-          -34.885
-        ],
-        [
-          -8.06,
-          -34.89
+          -8.0804011,
+          -34.8924138
         ]
       ]
     },
     {
-      "modo": "walk",
-      "meio": "walk",
+      "modo": "car",
+      "meio": "car",
       "origem": [
-        -8.1178,
-        -34.9002
+        -8.0804011,
+        -34.8924138
+      ],
+      "destino": [
+        -8.0809743,
+        -34.8922099
+      ],
+      "distancia": 0.0676,
+      "tempo": 0.0018,
+      "custo": 0.06,
+      "esforco": 0.0,
+      "risco": 0.0027,
+      "peso": 0.0067,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0804011,
+          -34.8924138
+        ],
+        [
+          -8.0809743,
+          -34.8922099
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0809743,
+        -34.8922099
+      ],
+      "destino": [
+        -8.0827513,
+        -34.8908395
+      ],
+      "distancia": 0.2498,
+      "tempo": 0.0066,
+      "custo": 0.23,
+      "esforco": 0.0,
+      "risco": 0.0099,
+      "peso": 0.0248,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0809743,
+          -34.8922099
+        ],
+        [
+          -8.0827513,
+          -34.8908395
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0827513,
+        -34.8908395
+      ],
+      "destino": [
+        -8.0853757,
+        -34.8884767
+      ],
+      "distancia": 0.391,
+      "tempo": 0.0103,
+      "custo": 0.37,
+      "esforco": 0.0,
+      "risco": 0.0155,
+      "peso": 0.0388,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0827513,
+          -34.8908395
+        ],
+        [
+          -8.0853757,
+          -34.8884767
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0853757,
+        -34.8884767
+      ],
+      "destino": [
+        -8.0858707,
+        -34.8880201
+      ],
+      "distancia": 0.0745,
+      "tempo": 0.002,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.003,
+      "peso": 0.0074,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0853757,
+          -34.8884767
+        ],
+        [
+          -8.0858707,
+          -34.8880201
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0858707,
+        -34.8880201
+      ],
+      "destino": [
+        -8.0862474,
+        -34.8876497
+      ],
+      "distancia": 0.0585,
+      "tempo": 0.0015,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.0023,
+      "peso": 0.0058,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0858707,
+          -34.8880201
+        ],
+        [
+          -8.0862474,
+          -34.8876497
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0862474,
+        -34.8876497
+      ],
+      "destino": [
+        -8.0864675,
+        -34.8874359
+      ],
+      "distancia": 0.034,
+      "tempo": 0.0009,
+      "custo": 0.03,
+      "esforco": 0.0,
+      "risco": 0.0013,
+      "peso": 0.0033,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0862474,
+          -34.8876497
+        ],
+        [
+          -8.0864675,
+          -34.8874359
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0864675,
+        -34.8874359
+      ],
+      "destino": [
+        -8.0876681,
+        -34.8863059
+      ],
+      "distancia": 0.1825,
+      "tempo": 0.0048,
+      "custo": 0.17,
+      "esforco": 0.0,
+      "risco": 0.0072,
+      "peso": 0.0181,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0864675,
+          -34.8874359
+        ],
+        [
+          -8.0876681,
+          -34.8863059
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0876681,
+        -34.8863059
+      ],
+      "destino": [
+        -8.087987,
+        -34.8860068
+      ],
+      "distancia": 0.0484,
+      "tempo": 0.0013,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.0019,
+      "peso": 0.0047,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0876681,
+          -34.8863059
+        ],
+        [
+          -8.087987,
+          -34.8860068
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.087987,
+        -34.8860068
+      ],
+      "destino": [
+        -8.0883287,
+        -34.8856721
+      ],
+      "distancia": 0.0529,
+      "tempo": 0.0014,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.0021,
+      "peso": 0.0052,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.087987,
+          -34.8860068
+        ],
+        [
+          -8.0883287,
+          -34.8856721
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0883287,
+        -34.8856721
+      ],
+      "destino": [
+        -8.0889135,
+        -34.8850914
+      ],
+      "distancia": 0.0912,
+      "tempo": 0.0024,
+      "custo": 0.09,
+      "esforco": 0.0,
+      "risco": 0.0036,
+      "peso": 0.009,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0883287,
+          -34.8856721
+        ],
+        [
+          -8.0889135,
+          -34.8850914
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0889135,
+        -34.8850914
+      ],
+      "destino": [
+        -8.0891512,
+        -34.8848547
+      ],
+      "distancia": 0.0371,
+      "tempo": 0.001,
+      "custo": 0.03,
+      "esforco": 0.0,
+      "risco": 0.0015,
+      "peso": 0.0036,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0889135,
+          -34.8850914
+        ],
+        [
+          -8.0891512,
+          -34.8848547
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0891512,
+        -34.8848547
+      ],
+      "destino": [
+        -8.0893716,
+        -34.8846341
+      ],
+      "distancia": 0.0345,
+      "tempo": 0.0009,
+      "custo": 0.03,
+      "esforco": 0.0,
+      "risco": 0.0014,
+      "peso": 0.0034,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0891512,
+          -34.8848547
+        ],
+        [
+          -8.0893716,
+          -34.8846341
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0893716,
+        -34.8846341
+      ],
+      "destino": [
+        -8.0902738,
+        -34.8845576
+      ],
+      "distancia": 0.1038,
+      "tempo": 0.0027,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0041,
+      "peso": 0.0103,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0893716,
+          -34.8846341
+        ],
+        [
+          -8.0902738,
+          -34.8845576
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0902738,
+        -34.8845576
+      ],
+      "destino": [
+        -8.0903647,
+        -34.8845811
+      ],
+      "distancia": 0.0104,
+      "tempo": 0.0003,
+      "custo": 0.01,
+      "esforco": 0.0,
+      "risco": 0.0004,
+      "peso": 0.001,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0902738,
+          -34.8845576
+        ],
+        [
+          -8.0903647,
+          -34.8845811
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0903647,
+        -34.8845811
+      ],
+      "destino": [
+        -8.0908745,
+        -34.8847389
+      ],
+      "distancia": 0.0593,
+      "tempo": 0.0016,
+      "custo": 0.06,
+      "esforco": 0.0,
+      "risco": 0.0023,
+      "peso": 0.0058,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0903647,
+          -34.8845811
+        ],
+        [
+          -8.0908745,
+          -34.8847389
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0908745,
+        -34.8847389
+      ],
+      "destino": [
+        -8.0913175,
+        -34.8848615
+      ],
+      "distancia": 0.0511,
+      "tempo": 0.0013,
+      "custo": 0.05,
+      "esforco": 0.0,
+      "risco": 0.002,
+      "peso": 0.005,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0908745,
+          -34.8847389
+        ],
+        [
+          -8.0913175,
+          -34.8848615
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0913175,
+        -34.8848615
+      ],
+      "destino": [
+        -8.0929018,
+        -34.8852975
+      ],
+      "distancia": 0.1826,
+      "tempo": 0.0048,
+      "custo": 0.17,
+      "esforco": 0.0,
+      "risco": 0.0072,
+      "peso": 0.0181,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0913175,
+          -34.8848615
+        ],
+        [
+          -8.0929018,
+          -34.8852975
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0929018,
+        -34.8852975
+      ],
+      "destino": [
+        -8.0940518,
+        -34.885678
+      ],
+      "distancia": 0.135,
+      "tempo": 0.0036,
+      "custo": 0.13,
+      "esforco": 0.0,
+      "risco": 0.0053,
+      "peso": 0.0134,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0929018,
+          -34.8852975
+        ],
+        [
+          -8.0940518,
+          -34.885678
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0940518,
+        -34.885678
+      ],
+      "destino": [
+        -8.0951832,
+        -34.8859348
+      ],
+      "distancia": 0.1289,
+      "tempo": 0.0034,
+      "custo": 0.12,
+      "esforco": 0.0,
+      "risco": 0.0051,
+      "peso": 0.0128,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0940518,
+          -34.885678
+        ],
+        [
+          -8.0951832,
+          -34.8859348
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0951832,
+        -34.8859348
+      ],
+      "destino": [
+        -8.0973732,
+        -34.8863207
+      ],
+      "distancia": 0.2472,
+      "tempo": 0.0065,
+      "custo": 0.23,
+      "esforco": 0.0,
+      "risco": 0.0098,
+      "peso": 0.0245,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0951832,
+          -34.8859348
+        ],
+        [
+          -8.0973732,
+          -34.8863207
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0973732,
+        -34.8863207
+      ],
+      "destino": [
+        -8.0987473,
+        -34.8866166
+      ],
+      "distancia": 0.1568,
+      "tempo": 0.0041,
+      "custo": 0.15,
+      "esforco": 0.0,
+      "risco": 0.0062,
+      "peso": 0.0155,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.0973732,
+          -34.8863207
+        ],
+        [
+          -8.0987473,
+          -34.8866166
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0987473,
+        -34.8866166
+      ],
+      "destino": [
+        -8.0993153,
+        -34.8868847
+      ],
+      "distancia": 0.0697,
+      "tempo": 0.0015,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0028,
+      "peso": 0.0066,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.0987473,
+          -34.8866166
+        ],
+        [
+          -8.0993153,
+          -34.8868847
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0993153,
+        -34.8868847
+      ],
+      "destino": [
+        -8.0999094,
+        -34.8871521
+      ],
+      "distancia": 0.0723,
+      "tempo": 0.0016,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0029,
+      "peso": 0.0069,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.0993153,
+          -34.8868847
+        ],
+        [
+          -8.0999094,
+          -34.8871521
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.0999094,
+        -34.8871521
+      ],
+      "destino": [
+        -8.1019594,
+        -34.8880895
+      ],
+      "distancia": 0.2502,
+      "tempo": 0.0055,
+      "custo": 0.23,
+      "esforco": 0.0,
+      "risco": 0.0099,
+      "peso": 0.0239,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.0999094,
+          -34.8871521
+        ],
+        [
+          -8.1019594,
+          -34.8880895
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1019594,
+        -34.8880895
+      ],
+      "destino": [
+        -8.1040229,
+        -34.8890352
+      ],
+      "distancia": 0.252,
+      "tempo": 0.0055,
+      "custo": 0.24,
+      "esforco": 0.0,
+      "risco": 0.01,
+      "peso": 0.024,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1019594,
+          -34.8880895
+        ],
+        [
+          -8.1040229,
+          -34.8890352
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1040229,
+        -34.8890352
+      ],
+      "destino": [
+        -8.1054344,
+        -34.8896935
+      ],
+      "distancia": 0.1729,
+      "tempo": 0.0038,
+      "custo": 0.16,
+      "esforco": 0.0,
+      "risco": 0.0068,
+      "peso": 0.0165,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1040229,
+          -34.8890352
+        ],
+        [
+          -8.1054344,
+          -34.8896935
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1054344,
+        -34.8896935
+      ],
+      "destino": [
+        -8.1061588,
+        -34.8900335
+      ],
+      "distancia": 0.0888,
+      "tempo": 0.002,
+      "custo": 0.08,
+      "esforco": 0.0,
+      "risco": 0.0035,
+      "peso": 0.0084,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1054344,
+          -34.8896935
+        ],
+        [
+          -8.1061588,
+          -34.8900335
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1061588,
+        -34.8900335
+      ],
+      "destino": [
+        -8.109229,
+        -34.891625
+      ],
+      "distancia": 0.3843,
+      "tempo": 0.0085,
+      "custo": 0.36,
+      "esforco": 0.0,
+      "risco": 0.0152,
+      "peso": 0.0367,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1061588,
+          -34.8900335
+        ],
+        [
+          -8.109229,
+          -34.891625
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.109229,
+        -34.891625
+      ],
+      "destino": [
+        -8.1099244,
+        -34.8920341
+      ],
+      "distancia": 0.0895,
+      "tempo": 0.002,
+      "custo": 0.08,
+      "esforco": 0.0,
+      "risco": 0.0035,
+      "peso": 0.0085,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.109229,
+          -34.891625
+        ],
+        [
+          -8.1099244,
+          -34.8920341
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1099244,
+        -34.8920341
+      ],
+      "destino": [
+        -8.1105234,
+        -34.8923947
+      ],
+      "distancia": 0.0775,
+      "tempo": 0.0017,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0031,
+      "peso": 0.0074,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1099244,
+          -34.8920341
+        ],
+        [
+          -8.1105234,
+          -34.8923947
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1105234,
+        -34.8923947
+      ],
+      "destino": [
+        -8.1110955,
+        -34.8927431
+      ],
+      "distancia": 0.0743,
+      "tempo": 0.0016,
+      "custo": 0.07,
+      "esforco": 0.0,
+      "risco": 0.0029,
+      "peso": 0.007,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1105234,
+          -34.8923947
+        ],
+        [
+          -8.1110955,
+          -34.8927431
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1110955,
+        -34.8927431
+      ],
+      "destino": [
+        -8.1119579,
+        -34.8932501
+      ],
+      "distancia": 0.111,
+      "tempo": 0.0024,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0044,
+      "peso": 0.0105,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1110955,
+          -34.8927431
+        ],
+        [
+          -8.1119579,
+          -34.8932501
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1119579,
+        -34.8932501
+      ],
+      "destino": [
+        -8.1124487,
+        -34.8935503
+      ],
+      "distancia": 0.0638,
+      "tempo": 0.0014,
+      "custo": 0.06,
+      "esforco": 0.0,
+      "risco": 0.0025,
+      "peso": 0.006,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1119579,
+          -34.8932501
+        ],
+        [
+          -8.1124487,
+          -34.8935503
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1124487,
+        -34.8935503
+      ],
+      "destino": [
+        -8.1132521,
+        -34.8940396
+      ],
+      "distancia": 0.1043,
+      "tempo": 0.0023,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0041,
+      "peso": 0.0099,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1124487,
+          -34.8935503
+        ],
+        [
+          -8.1132521,
+          -34.8940396
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1132521,
+        -34.8940396
+      ],
+      "destino": [
+        -8.1140731,
+        -34.8945548
+      ],
+      "distancia": 0.1075,
+      "tempo": 0.0024,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0043,
+      "peso": 0.0102,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1132521,
+          -34.8940396
+        ],
+        [
+          -8.1140731,
+          -34.8945548
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1140731,
+        -34.8945548
+      ],
+      "destino": [
+        -8.1149134,
+        -34.8950586
+      ],
+      "distancia": 0.1087,
+      "tempo": 0.0024,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0043,
+      "peso": 0.0103,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1140731,
+          -34.8945548
+        ],
+        [
+          -8.1149134,
+          -34.8950586
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1149134,
+        -34.8950586
+      ],
+      "destino": [
+        -8.115731,
+        -34.8955696
+      ],
+      "distancia": 0.1069,
+      "tempo": 0.0024,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0042,
+      "peso": 0.0102,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1149134,
+          -34.8950586
+        ],
+        [
+          -8.115731,
+          -34.8955696
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.115731,
+        -34.8955696
+      ],
+      "destino": [
+        -8.1165602,
+        -34.8960963
+      ],
+      "distancia": 0.1089,
+      "tempo": 0.0024,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0043,
+      "peso": 0.0104,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.115731,
+          -34.8955696
+        ],
+        [
+          -8.1165602,
+          -34.8960963
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1165602,
+        -34.8960963
+      ],
+      "destino": [
+        -8.1173705,
+        -34.8965818
+      ],
+      "distancia": 0.1048,
+      "tempo": 0.0023,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0041,
+      "peso": 0.01,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1165602,
+          -34.8960963
+        ],
+        [
+          -8.1173705,
+          -34.8965818
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1173705,
+        -34.8965818
+      ],
+      "destino": [
+        -8.1182395,
+        -34.89708
+      ],
+      "distancia": 0.1111,
+      "tempo": 0.0024,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0044,
+      "peso": 0.0106,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1173705,
+          -34.8965818
+        ],
+        [
+          -8.1182395,
+          -34.89708
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1182395,
+        -34.89708
+      ],
+      "destino": [
+        -8.1190455,
+        -34.8975797
+      ],
+      "distancia": 0.1052,
+      "tempo": 0.0023,
+      "custo": 0.1,
+      "esforco": 0.0,
+      "risco": 0.0042,
+      "peso": 0.01,
+      "velocidade_media_kmh": 60.0,
+      "geometry": [
+        [
+          -8.1182395,
+          -34.89708
+        ],
+        [
+          -8.1190455,
+          -34.8975797
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1190455,
+        -34.8975797
+      ],
+      "destino": [
+        -8.1185176,
+        -34.8987522
+      ],
+      "distancia": 0.1418,
+      "tempo": 0.0037,
+      "custo": 0.13,
+      "esforco": 0.0,
+      "risco": 0.0056,
+      "peso": 0.014,
+      "velocidade_media_kmh": 50.0,
+      "geometry": [
+        [
+          -8.1190455,
+          -34.8975797
+        ],
+        [
+          -8.1185176,
+          -34.8987522
+        ]
+      ]
+    },
+    {
+      "modo": "car",
+      "meio": "car",
+      "origem": [
+        -8.1185176,
+        -34.8987522
       ],
       "destino": [
         -8.1179317,
         -34.8999959
       ],
-      "distancia": 0.0268,
-      "tempo": 0.0059,
-      "custo": 0.0,
-      "esforco": 0.1475,
-      "risco": 0.0008,
-      "peso": 0.0112,
-      "velocidade_media_kmh": 5.0,
+      "distancia": 0.1516,
+      "tempo": 0.004,
+      "custo": 0.14,
+      "esforco": 0.0,
+      "risco": 0.006,
+      "peso": 0.015,
+      "velocidade_media_kmh": 50.0,
       "geometry": [
         [
-          -8.1178,
-          -34.9002
+          -8.1185176,
+          -34.8987522
         ],
         [
           -8.1179317,
@@ -1290,92 +2178,32 @@
   ],
   "segments": [
     {
-      "modo": "bike",
-      "meio": "bike",
+      "modo": "car",
+      "meio": "car",
       "origem": [
         -8.0623949,
         -34.8737916
       ],
       "destino": [
-        -8.0797872,
-        -34.894768
-      ],
-      "tempo": 0.2195,
-      "distancia": 3.9851,
-      "custo": 0.0,
-      "esforco": 6.5758,
-      "risco_medio": 0.0032,
-      "velocidade_media_kmh": 18.16,
-      "quantidade_arestas": 41
-    },
-    {
-      "modo": "walk",
-      "meio": "walk",
-      "origem": [
-        -8.0797872,
-        -34.894768
-      ],
-      "destino": [
-        -8.08,
-        -34.895
-      ],
-      "tempo": 0.0077,
-      "distancia": 0.0348,
-      "custo": 0.0,
-      "esforco": 0.1915,
-      "risco_medio": 0.001,
-      "velocidade_media_kmh": 4.52,
-      "quantidade_arestas": 1
-    },
-    {
-      "modo": "bus",
-      "meio": "bus",
-      "origem": [
-        -8.08,
-        -34.895
-      ],
-      "destino": [
-        -8.1178,
-        -34.9002
-      ],
-      "tempo": 0.1866,
-      "distancia": 4.242,
-      "custo": 4.5,
-      "esforco": 0.0,
-      "risco_medio": 0.084,
-      "velocidade_media_kmh": 22.73,
-      "quantidade_arestas": 1,
-      "linha": "1 - Rota Teste Recife",
-      "gtfs_shape_id": "shape_1",
-      "validacao_gtfs": true
-    },
-    {
-      "modo": "walk",
-      "meio": "walk",
-      "origem": [
-        -8.1178,
-        -34.9002
-      ],
-      "destino": [
         -8.1179317,
         -34.8999959
       ],
-      "tempo": 0.0059,
-      "distancia": 0.0268,
-      "custo": 0.0,
-      "esforco": 0.1475,
-      "risco_medio": 0.0008,
-      "velocidade_media_kmh": 4.54,
-      "quantidade_arestas": 1
+      "tempo": 0.2412,
+      "distancia": 9.0922,
+      "custo": 8.51,
+      "esforco": 0.0,
+      "risco_medio": 0.0048,
+      "velocidade_media_kmh": 37.7,
+      "quantidade_arestas": 75
     }
   ],
   "resumo": {
-    "tempo_total": 0.4197,
-    "custo_total": 4.5,
-    "esforco_total": 6.9148,
-    "distancia_total": 8.2887,
-    "risco_medio": 0.0049,
-    "velocidade_media_total": 19.75
+    "tempo_total": 0.2412,
+    "custo_total": 8.51,
+    "esforco_total": 0.0,
+    "distancia_total": 9.0922,
+    "risco_medio": 0.0048,
+    "velocidade_media_total": 37.7
   },
   "route_points": [
     [
@@ -1503,72 +2331,180 @@
       -34.8925714
     ],
     [
-      -8.0778183,
-      -34.8926791
+      -8.0779059,
+      -34.8926452
     ],
     [
-      -8.0779261,
-      -34.8929778
+      -8.0804011,
+      -34.8924138
     ],
     [
-      -8.078002,
-      -34.8933835
+      -8.0809743,
+      -34.8922099
     ],
     [
-      -8.0781403,
-      -34.8938915
+      -8.0827513,
+      -34.8908395
     ],
     [
-      -8.0780484,
-      -34.8939214
+      -8.0853757,
+      -34.8884767
     ],
     [
-      -8.0782711,
-      -34.8945644
+      -8.0858707,
+      -34.8880201
     ],
     [
-      -8.0784798,
-      -34.8951671
+      -8.0862474,
+      -34.8876497
     ],
     [
-      -8.0787919,
-      -34.895084
+      -8.0864675,
+      -34.8874359
     ],
     [
-      -8.0791136,
-      -34.8949839
+      -8.0876681,
+      -34.8863059
     ],
     [
-      -8.0794535,
-      -34.8948803
+      -8.087987,
+      -34.8860068
     ],
     [
-      -8.0797872,
-      -34.894768
+      -8.0883287,
+      -34.8856721
     ],
     [
-      -8.08,
-      -34.895
+      -8.0889135,
+      -34.8850914
     ],
     [
-      -8.0476,
-      -34.877
+      -8.0891512,
+      -34.8848547
     ],
     [
-      -8.05,
-      -34.88
+      -8.0893716,
+      -34.8846341
     ],
     [
-      -8.055,
-      -34.885
+      -8.0902738,
+      -34.8845576
     ],
     [
-      -8.06,
-      -34.89
+      -8.0903647,
+      -34.8845811
     ],
     [
-      -8.1178,
-      -34.9002
+      -8.0908745,
+      -34.8847389
+    ],
+    [
+      -8.0913175,
+      -34.8848615
+    ],
+    [
+      -8.0929018,
+      -34.8852975
+    ],
+    [
+      -8.0940518,
+      -34.885678
+    ],
+    [
+      -8.0951832,
+      -34.8859348
+    ],
+    [
+      -8.0973732,
+      -34.8863207
+    ],
+    [
+      -8.0987473,
+      -34.8866166
+    ],
+    [
+      -8.0993153,
+      -34.8868847
+    ],
+    [
+      -8.0999094,
+      -34.8871521
+    ],
+    [
+      -8.1019594,
+      -34.8880895
+    ],
+    [
+      -8.1040229,
+      -34.8890352
+    ],
+    [
+      -8.1054344,
+      -34.8896935
+    ],
+    [
+      -8.1061588,
+      -34.8900335
+    ],
+    [
+      -8.109229,
+      -34.891625
+    ],
+    [
+      -8.1099244,
+      -34.8920341
+    ],
+    [
+      -8.1105234,
+      -34.8923947
+    ],
+    [
+      -8.1110955,
+      -34.8927431
+    ],
+    [
+      -8.1119579,
+      -34.8932501
+    ],
+    [
+      -8.1124487,
+      -34.8935503
+    ],
+    [
+      -8.1132521,
+      -34.8940396
+    ],
+    [
+      -8.1140731,
+      -34.8945548
+    ],
+    [
+      -8.1149134,
+      -34.8950586
+    ],
+    [
+      -8.115731,
+      -34.8955696
+    ],
+    [
+      -8.1165602,
+      -34.8960963
+    ],
+    [
+      -8.1173705,
+      -34.8965818
+    ],
+    [
+      -8.1182395,
+      -34.89708
+    ],
+    [
+      -8.1190455,
+      -34.8975797
+    ],
+    [
+      -8.1185176,
+      -34.8987522
     ],
     [
       -8.1179317,

@@ -15,6 +15,8 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.widthIn
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
@@ -23,6 +25,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.gestures.detectTransformGestures
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -57,6 +60,9 @@ import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.ui.graphics.Path
 import androidx.compose.ui.graphics.drawscope.Stroke
 import coil.compose.AsyncImage
@@ -68,6 +74,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.net.HttpURLConnection
 import java.net.URL
+import com.optirout.data.model.TransportModal
+import com.optirout.ui.screens.ModalSelectionScreen
 
 private const val FIXED_ORIGIN_LAT = -8.062742
 private const val FIXED_ORIGIN_LON = -34.8739
@@ -89,15 +97,11 @@ private data class RouteSegmentInfo(
 )
 
 private val modalOptions = listOf(
-    ModalOption("multimodal", "Multimodal", "walk", null),
-    ModalOption("walk", "A pé", "walk", "walk"),
     ModalOption("bike", "Bicicleta", "bike", "bike"),
     ModalOption("car", "Carro", "car", "car"),
     ModalOption("moto", "Moto", "moto", "moto"),
     ModalOption("bus", "Ônibus", "bus", "bus"),
-    ModalOption("bus_access", "Ônibus + acesso a pé", "walk", "bus_com_acesso"),
     ModalOption("uber_car", "Uber carro", "uber_car", "uber_car"),
-    ModalOption("uber_moto", "Uber moto", "uber_moto", "uber_moto"),
 )
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -106,6 +110,7 @@ fun OptiRoutApp() {
     val scope = rememberCoroutineScope()
     val ctx = LocalContext.current
 
+    var showHomeScreen by remember { mutableStateOf(true) }
     var selectedModal by remember { mutableStateOf(modalOptions.first()) }
     var isCalculating by remember { mutableStateOf(false) }
     var showMenu by remember { mutableStateOf(false) }
@@ -124,103 +129,138 @@ fun OptiRoutApp() {
         )
     }
 
-    Scaffold(
-        contentWindowInsets = WindowInsets.safeDrawing,
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "OptiRout",
-                        style = MaterialTheme.typography.titleLarge,
-                        fontWeight = FontWeight.SemiBold,
+    // função reutilizável para iniciar cálculo
+    fun startCalculation(modal: ModalOption, navigateToSession: Boolean = true, onFinished: (() -> Unit)? = null) {
+        scope.launch {
+            isCalculating = true
+            Toast.makeText(ctx, "Iniciando cálculo...", Toast.LENGTH_SHORT).show()
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    executeRouteCalculation(modal)
+                }
+                val resumo = response.optJSONObject("resumo")
+                val tempoTotal = resumo?.optDouble("tempo_total", 0.0) ?: 0.0
+                val custoTotal = resumo?.optDouble("custo_total", 0.0) ?: 0.0
+                val distancia = resumo?.optDouble("distancia_total", 0.0) ?: 0.0
+                val segmentosJson = response.optJSONArray("segments")
+                val segmentos = segmentosJson?.length() ?: 0
+
+                valorGasto = "R$ %.2f".format(custoTotal)
+                tempoMedio = if (segmentos > 0) "%.2f min/trecho".format((tempoTotal / segmentos) * 60.0) else "--"
+                distanciaTotal = "%.2f km".format(distancia)
+                segmentosRota = parseRouteSegments(segmentosJson)
+                routePoints = parseRoutePoints(response)
+                Toast.makeText(ctx, "Calculo concluido", Toast.LENGTH_SHORT).show()
+
+                if (navigateToSession) showHomeScreen = false
+            } catch (ex: Exception) {
+                Toast.makeText(
+                    ctx,
+                    "Falha ao calcular: ${ex.message}",
+                    Toast.LENGTH_LONG,
+                ).show()
+            } finally {
+                isCalculating = false
+                onFinished?.invoke()
+            }
+        }
+    }
+
+    if (showHomeScreen) {
+        Box(modifier = Modifier.fillMaxSize()) {
+            ModalSelectionScreen(
+                onRouteStarted = { modal, onFinished ->
+                    selectedModal = modal.toLegacyModalOption()
+                    startCalculation(selectedModal, true, onFinished)
+                },
+            )
+
+            if (isCalculating) {
+                LoadingScreen(message = "Calculando rota...")
+            }
+        }
+    } else {
+        Box(modifier = Modifier.fillMaxSize()) {
+            Scaffold(
+                contentWindowInsets = WindowInsets.safeDrawing,
+                topBar = {
+                    TopAppBar(
+                        title = {
+                            Text(
+                                text = "OptiRout",
+                                style = MaterialTheme.typography.titleLarge,
+                                fontWeight = FontWeight.SemiBold,
+                            )
+                        },
+                        navigationIcon = {
+                            Box {
+                                IconButton(onClick = { showMenu = true }) {
+                                    Icon(
+                                        painter = painterResource(id = R.drawable.ic_menu),
+                                        contentDescription = "Menu",
+                                    )
+                                }
+                                DropdownMenu(
+                                    expanded = showMenu,
+                                    onDismissRequest = { showMenu = false },
+                                ) {
+                                    DropdownMenuItem(
+                                        text = { Text("Voltar para a tela inicial") },
+                                        onClick = {
+                                            showMenu = false
+                                            showHomeScreen = true
+                                        },
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text("Selecionar modal") },
+                                        onClick = {
+                                            showMenu = false
+                                            showModalDialog = true
+                                        },
+                                    )
+                                    DropdownMenuItem(
+                                        text = { Text("Explicacao do calculo") },
+                                        onClick = {
+                                            showMenu = false
+                                            showExplanationDialog = true
+                                        },
+                                    )
+                                }
+                            }
+                        },
                     )
                 },
-                navigationIcon = {
-                    Box {
-                        IconButton(onClick = { showMenu = true }) {
-                            Icon(
-                                painter = painterResource(id = R.drawable.ic_menu),
-                                contentDescription = "Menu",
-                            )
-                        }
-                        DropdownMenu(
-                            expanded = showMenu,
-                            onDismissRequest = { showMenu = false },
-                        ) {
-                            DropdownMenuItem(
-                                text = { Text("Selecionar modal") },
-                                onClick = {
-                                    showMenu = false
-                                    showModalDialog = true
-                                },
-                            )
-                            DropdownMenuItem(
-                                text = { Text("Explicacao do calculo") },
-                                onClick = {
-                                    showMenu = false
-                                    showExplanationDialog = true
-                                },
-                            )
-                        }
-                    }
-                },
-            )
-        },
-    ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(innerPadding)
-                .background(MaterialTheme.colorScheme.background)
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-            RouteMapCard(routePoints = routePoints)
-            RouteMetricsCard(
-                modalEscolhido = selectedModal.label,
-                valorGasto = valorGasto,
-                tempoMedio = tempoMedio,
-                distanciaTotal = distanciaTotal,
-            )
-            RouteSegmentsSection(segmentos = segmentosRota)
+            ) { innerPadding ->
+                Column(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .padding(innerPadding)
+                        .background(MaterialTheme.colorScheme.background)
+                        .padding(16.dp)
+                        .verticalScroll(rememberScrollState()),
+                    verticalArrangement = Arrangement.spacedBy(16.dp),
+                ) {
+                    RouteMapCard(routePoints = routePoints)
+                    RouteMetricsCard(
+                        modalEscolhido = selectedModal.label,
+                        valorGasto = valorGasto,
+                        tempoMedio = tempoMedio,
+                        distanciaTotal = distanciaTotal,
+                    )
+                    RouteSegmentsSection(segmentos = segmentosRota)
 
-            Button(
-                onClick = {
-                    scope.launch {
-                        isCalculating = true
-                        try {
-                            val response = withContext(Dispatchers.IO) {
-                                executeRouteCalculation(selectedModal)
-                            }
-                            val resumo = response.optJSONObject("resumo")
-                            val tempoTotal = resumo?.optDouble("tempo_total", 0.0) ?: 0.0
-                            val custoTotal = resumo?.optDouble("custo_total", 0.0) ?: 0.0
-                            val distancia = resumo?.optDouble("distancia_total", 0.0) ?: 0.0
-                            val segmentosJson = response.optJSONArray("segments")
-                            val segmentos = segmentosJson?.length() ?: 0
-
-                            valorGasto = "R$ %.2f".format(custoTotal)
-                            tempoMedio = if (segmentos > 0) "%.2f min/trecho".format((tempoTotal / segmentos) * 60.0) else "--"
-                            distanciaTotal = "%.2f km".format(distancia)
-                            segmentosRota = parseRouteSegments(segmentosJson)
-                            routePoints = parseRoutePoints(response)
-                            Toast.makeText(ctx, "Calculo concluido", Toast.LENGTH_SHORT).show()
-                        } catch (ex: Exception) {
-                            Toast.makeText(
-                                ctx,
-                                "Falha ao calcular: ${ex.message}",
-                                Toast.LENGTH_LONG,
-                            ).show()
-                        } finally {
-                            isCalculating = false
-                        }
+                    Button(
+                        onClick = { startCalculation(selectedModal, false) },
+                        enabled = !isCalculating,
+                        modifier = Modifier.fillMaxWidth(),
+                    ) {
+                        Text(if (isCalculating) "Calculando..." else "Calcular rota multimodal")
                     }
-                },
-                enabled = !isCalculating,
-                modifier = Modifier.fillMaxWidth(),
-            ) {
-                Text(if (isCalculating) "Calculando..." else "Calcular rota multimodal")
+                }
+            }
+
+            if (isCalculating) {
+                LoadingScreen(message = "Calculando rota...")
             }
         }
     }
@@ -238,6 +278,91 @@ fun OptiRoutApp() {
 
     if (showExplanationDialog) {
         ExplanationDialog(onDismiss = { showExplanationDialog = false })
+    }
+}
+
+private fun TransportModal.toLegacyModalOption(): ModalOption {
+    return when (id) {
+        1 -> ModalOption("bike", name, "bike", "bike")
+        2 -> ModalOption("car", name, "car", "car")
+        3 -> ModalOption("moto", name, "moto", "moto")
+        4 -> ModalOption("bus", name, "bus", "bus")
+        else -> ModalOption("uber_car", name, "uber_car", "uber_car")
+    }
+}
+
+@Composable
+private fun LoadingScreen(message: String = "Carregando...") {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        contentAlignment = Alignment.Center,
+    ) {
+        Column(horizontalAlignment = Alignment.CenterHorizontally) {
+            androidx.compose.material3.CircularProgressIndicator()
+            androidx.compose.material3.Text(
+                text = message,
+                modifier = Modifier.padding(top = 12.dp),
+                style = MaterialTheme.typography.bodyLarge,
+            )
+        }
+    }
+}
+
+@OptIn(ExperimentalLayoutApi::class)
+@Composable
+private fun HomeScreen(
+    selectedModal: ModalOption,
+    onModalChange: (ModalOption) -> Unit,
+    onEnterSession: () -> Unit,
+    onStartWithModal: (ModalOption) -> Unit,
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(16.dp),
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Card(
+            modifier = Modifier.fillMaxWidth(),
+            colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surface),
+        ) {
+            Column(
+                modifier = Modifier.padding(20.dp),
+                verticalArrangement = Arrangement.spacedBy(12.dp),
+            ) {
+                Text(
+                    text = "OptiRout",
+                    style = MaterialTheme.typography.headlineMedium,
+                    fontWeight = FontWeight.Bold,
+                )
+                Text(
+                    text = "Escolha o modal e inicie a consulta de rotas.",
+                    style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    modalOptions.forEach { option ->
+                        val isSelected = option.id == selectedModal.id
+                        ModalChip(
+                            label = option.label,
+                            emoji = modalEmoji(option.id),
+                            selected = isSelected,
+                            onClick = { onModalChange(option) }
+                        )
+                    }
+                }
+
+                Row(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
+                    Button(onClick = onEnterSession, modifier = Modifier.weight(1f)) {
+                        Text("Abrir sessão de rotas")
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -549,6 +674,18 @@ private fun buildMapProjection(routePoints: List<Pair<Double, Double>>, zoomLeve
     )
 }
 
+@Composable
+private fun modalEmoji(id: String): String {
+    return when (id) {
+        "bike" -> "🚴"
+        "car" -> "🚗"
+        "moto" -> "🏍️"
+        "bus" -> "🚌"
+        "uber_car" -> "🚕"
+        else -> "🔀"
+    }
+}
+
 private fun computeInitialZoom(routePoints: List<Pair<Double, Double>>): Int {
     if (routePoints.isEmpty()) return 14
 
@@ -582,35 +719,43 @@ private fun ModalSelectionDialog(
     onSelect: (ModalOption) -> Unit,
     onDismiss: () -> Unit,
 ) {
+    var current by remember { mutableStateOf(selectedModal) }
+
     AlertDialog(
         onDismissRequest = onDismiss,
-        confirmButton = {
-            TextButton(onClick = onDismiss) { Text("Fechar") }
-        },
         title = { Text("Selecionar modal") },
         text = {
             Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
                 Text(
-                    text = "Escolha qual modal sera usado no calculo.",
+                    text = "Escolha qual modal será usado no cálculo.",
                     style = MaterialTheme.typography.bodyMedium,
                 )
-                FlowRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
+                FlowRow(horizontalArrangement = Arrangement.spacedBy(12.dp)) {
                     modalOptions.forEach { option ->
+                        val isSelected = option.id == current.id
                         ModalChip(
                             label = option.label,
-                            color = if (option.id == selectedModal.id) MaterialTheme.colorScheme.primary else Color(0xFF9AA7C7),
+                            emoji = modalEmoji(option.id),
+                            selected = isSelected,
+                            onClick = { current = option }
                         )
                     }
                 }
-                Column(verticalArrangement = Arrangement.spacedBy(4.dp)) {
-                    modalOptions.forEach { option ->
-                        TextButton(onClick = { onSelect(option) }) {
-                            Text(option.label)
-                        }
-                    }
-                }
+
+                Text(
+                    text = "Toque em um modal para selecionar. Depois confirme abaixo.",
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
             }
         },
+        confirmButton = {
+            Row {
+                TextButton(onClick = onDismiss) { Text("Cancelar") }
+                TextButton(onClick = { onSelect(current); onDismiss() }) { Text("Confirmar") }
+            }
+        }
     )
 }
 
@@ -713,16 +858,22 @@ private fun MetricRow(label: String, value: String) {
 }
 
 @Composable
-private fun ModalChip(label: String, color: Color) {
+private fun ModalChip(
+    label: String,
+    emoji: String,
+    selected: Boolean,
+    onClick: () -> Unit,
+) {
     Surface(
-        color = color.copy(alpha = 0.18f),
-        shape = RoundedCornerShape(999.dp),
+        modifier = Modifier
+            .clickable { onClick() },
+        color = if (selected) MaterialTheme.colorScheme.primary.copy(alpha = 0.14f) else MaterialTheme.colorScheme.surface,
+        shape = RoundedCornerShape(18.dp),
+        border = if (selected) BorderStroke(2.dp, MaterialTheme.colorScheme.primary) else null,
     ) {
-        Text(
-            text = label,
-            modifier = Modifier.padding(horizontal = 14.dp, vertical = 8.dp),
-            color = color,
-            style = MaterialTheme.typography.labelMedium,
-        )
+        Row(modifier = Modifier.padding(horizontal = 12.dp, vertical = 10.dp), verticalAlignment = Alignment.CenterVertically) {
+            Text(text = emoji, fontSize = 18.sp, modifier = Modifier.padding(end = 8.dp))
+            Text(text = label, style = MaterialTheme.typography.labelMedium, color = if (selected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface)
+        }
     }
 }
