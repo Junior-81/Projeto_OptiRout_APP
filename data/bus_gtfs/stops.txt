@@ -1,7 +1,0 @@
-stop_id,stop_name,stop_lat,stop_lon
-stop_0,Terminal Origem,-8.0627,-34.8739
-stop_1,Parada A,-8.0600,-34.8800
-stop_2,Parada B,-8.0550,-34.8850
-stop_3,Parada C,-8.0500,-34.8900
-stop_4,Parada D,-8.0800,-34.8950
-stop_5,Terminal Destino,-8.1178,-34.9002

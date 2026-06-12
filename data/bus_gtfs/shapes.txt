@@ -1,5 +1,0 @@
-shape_id,shape_pt_lat,shape_pt_lon,shape_pt_sequence
-shape_1,-8.0476,-34.8770,1
-shape_1,-8.0500,-34.8800,2
-shape_1,-8.0550,-34.8850,3
-shape_1,-8.0600,-34.8900,4

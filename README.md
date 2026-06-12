@@ -1,462 +1,165 @@
-# Sistema de Rotas Multimodais (Dijkstra e A*)
+# OptiRout Android
 
-Sistema em Python para recomendacao de rotas entre origem e destino com multiplos modais, otimizando **tempo**, **custo** e **risco** de forma conjunta.
+Documentacao tecnica da base Android nativa do OptiRout, implementada com Kotlin e Jetpack Compose.
 
-Este projeto possui:
-- motor de calculo em Python (`main.py`)
-- API FastAPI no backend (`backend/`)
-- aplicativo Android nativo com Kotlin e Jetpack Compose (`android/`)
+## Visao geral
 
----
+Este modulo Android funciona como a camada mobile do projeto. Ele nao executa o algoritmo de roteamento localmente; em vez disso, envia os parametros da consulta para o backend Python/FastAPI e renderiza o resultado retornado pela API.
 
-## 1. Visao Geral
+A primeira entrega da base concentra tres pontos:
 
-O sistema transforma o problema de rota em um problema de caminho minimo em um **grafo multimodal**.
+- estrutura inicial do app Android
+- tela principal com mapa, selecao de modal e resumo da rota
+- integracao direta com a API de calculo existente
 
-Cada aresta representa um deslocamento possivel com um modal especifico (walk, bike, car, moto, bus, uber_car, uber_moto), e recebe um peso multiobjetivo:
+## Stack utilizada
 
-```text
-peso = 0.5 * tempo_norm + 0.3 * custo_norm + 0.2 * risco_norm
-```
+- Kotlin 2.0.21
+- Android Gradle Plugin 8.5.2
+- Jetpack Compose
+- Material 3
+- Navigation Compose
+- Coil para carregamento de tiles/imagens
+- Coroutines para execucao assincrona
+- HTTP nativo com HttpURLConnection para chamar o backend
 
-O algoritmo escolhido (`dijkstra` ou `astar`) percorre esse grafo buscando o menor custo acumulado.
+## Estrutura do app
 
----
+O ponto de entrada da aplicacao eh a [MainActivity](app/src/main/java/com/optirout/MainActivity.kt) e a arvore principal de UI eh montada pela composable [OptiRoutApp](app/src/main/java/com/optirout/OptiRoutApp.kt).
 
-## 2. Motivo do projeto
+Fluxo atual:
 
-Este projeto existe para transformar um problema real de mobilidade urbana em um problema formal de algoritmos.
-Em Recife, a escolha de rota  nao depende so de distancia: envolve tempo, custo e seguranca. A proposta foi
-mostrar como esses criterios podem ser modelados em um grafo multimodal, comparando Dijkstra e A* de forma
-controlada e com dados reais (OSM, GTFS e CSVs locais).
+1. [MainActivity](app/src/main/java/com/optirout/MainActivity.kt) abre a aplicacao e aplica o tema.
+2. [OptiRoutTheme](app/src/main/java/com/optirout/ui/theme/Theme.kt) define a paleta visual.
+3. [OptiRoutApp](app/src/main/java/com/optirout/OptiRoutApp.kt) renderiza a tela principal.
+4. O usuario escolhe um modal e dispara o calculo.
+5. O app envia a requisicao para o backend FastAPI e atualiza a interface com o retorno.
 
-Pontos-chave do motivo:
-- aproximar teoria de analise de algoritmos do cotidiano urbano
-- permitir comparacao clara entre metodos de busca em grafos
-- avaliar trade-offs entre rapidez, custo e risco em uma mesma funcao objetivo
-- criar uma base tecnica reutilizavel para outras cidades e outros modais
+## Como o app funciona
 
----
+### 1. Tela principal
 
-## 3. Rota unica (escopo do estudo)
+A tela principal atual e composta por:
 
-O estudo foi concebido com **uma rota principal** para manter o experimento controlado: O deslocamento entre pontos estratégicos da cidade, como o Cine São Luiz, na rua da Aurora, no centro, e a Faculdade Nova
-Roma, na rua Padre Carapuceiro, em Boa Viagem. Isso permite comparar algoritmos e pesos
-com o minimo de variaveis externas.
+- topo com o nome do app e menu lateral via botao de menu
+- mapa da rota com zoom e pan
+- card de resumo com modal, custo, tempo medio e distancia total
+- lista de segmentos da rota, quando o backend devolve dados segmentados
+- botao para executar o calculo multimodal
 
-No sistema, essa rota unica nao fica "presa" no codigo. Ela e definida no `input.json`:
+### 2. Selecao de modal
 
-```json
-{
-  "origem": [-8.062742, -34.8739],
-  "destino": [-8.117809, -34.900231]
-}
-```
+O app trabalha com uma lista fixa de modais suportados, incluindo multimodal, a pe, bicicleta, carro, moto, onibus e variantes de Uber. Essa selecao define dois campos de negocio enviados ao backend:
 
-Ou seja:
-- a rota unica do estudo e o par origem/destino escolhido para o experimento
-- a ferramenta permite trocar a rota para novos cenarios sem alterar o codigo
+- modo_inicial
+- restricao_modal, quando aplicavel
 
----
+A selecao atual abre um dialog com opcoes predefinidas.
 
-## 4. Como Rodar
+### 3. Chamado ao backend
 
-### 4.1 Backend (API)
+Quando o usuario toca em "Calcular rota multimodal", o app monta um payload JSON com:
 
-No diretorio raiz do projeto:
+- origem fixa
+- destino fixo
+- modo inicial escolhido
+- restricao de modal, se existir
 
-```powershell
-pip install -r requirements.txt
-pip install -r backend/requirements.txt
-python -m uvicorn backend.app.main:app --reload --port 8000
-```
+O backend esperado esta em `http://10.0.2.2:8000/api/calculate`, que e o endereco usado pelo emulador Android para acessar o servidor local da maquina de desenvolvimento.
 
-Endpoints principais:
-- `GET /api/health`
-- `GET /api/route`
-- `POST /api/calculate`
-- `POST /api/options`
+### 4. Processamento da resposta
 
-### 4.2 App Android
+A resposta da API pode conter:
 
-O app mobile consome a API local do backend. O fluxo usado no desenvolvimento e:
+- resumo com tempo_total, custo_total e distancia_total
+- segments com o detalhamento por trecho
+- route_points para desenhar a rota no mapa
+- edges como fallback para reconstruir os pontos da rota, caso route_points nao venha preenchido
 
-```powershell
-cd android
-.\gradlew.bat assembleDebug
-```
+O app converte esses dados em estado de tela e atualiza os cards de resumo e de segmentos.
 
-Depois, instalar o APK no emulador ou dispositivo conectado.
+### 5. Renderizacao do mapa
 
----
+O mapa atual nao usa SDK nativo de mapas. Ele eh montado manualmente com tiles da Carto e desenha a rota sobreposta em Canvas.
 
-## 5. Entrada e Saida
+O comportamento atual inclui:
 
-### 5.1 Entrada (`input.json`)
+- calculo de projeção geografica com base nos pontos da rota
+- carregamento de tiles via Coil
+- desenho do traçado da rota em duas camadas de cor para melhorar contraste
+- marcadores de origem e destino
+- controles de zoom na propria tela
+
+## Contrato com o backend
+
+### Request
+
+O envio atual usa JSON com a seguinte estrutura conceitual:
+
+- origem: [latitude, longitude]
+- destino: [latitude, longitude]
+- modo_inicial: string
+- restricao_modal: string opcional
+
+### Response
+
+O app espera uma resposta com estrutura semelhante a:
+
+- resumo
+	- tempo_total
+	- custo_total
+	- distancia_total
+- segments
+	- servico, meio ou modo
+	- tempo
+	- custo
+	- distancia
+- route_points ou edges
+
+Se a API nao devolver pontos prontos, o app tenta reconstruir a geometria a partir dos segmentos/arestas.
+
+## Tema e interface
+
+O tema visual esta centralizado em [Theme.kt](app/src/main/java/com/optirout/ui/theme/Theme.kt) e usa uma paleta clara/escura propria. A interface foi pensada para uma primeira versao funcional, com foco em leitura de rota e acesso rapido ao calculo.
+
+## Estados atuais da tela
+
+O estado da tela e controlado com Compose state local. Hoje o app acompanha, entre outros:
+
+- modal selecionado
+- status de calculo em andamento
+- visibilidade de dialog de modal
+- visibilidade do dialog explicativo
+- valor gasto, tempo medio e distancia total
+- lista de segmentos
+- lista de pontos da rota
+
+## Dependencias e ambiente
+
+O modulo usa Java 17 e compileSdk/targetSdk 35. A comunicacao com o backend depende de permissao de internet e de cleartext habilitado no manifest para desenvolvimento local.
+
+## Melhorias ja mapeadas
+
+As proximas evolucoes que ja estao sendo consideradas sao:
+
+- melhoria de arquitetura, separando melhor UI, estado, acesso a dados e regra de negocio
+- melhoria do input/modal de selecao, substituindo a experiencia atual por um componente mais intuitivo e robusto
+- criacao de uma tela inicial/empty state para evitar que o app abra exibindo dados vazios ou placeholders pouco informativos
+
+## Observacoes tecnicas
+
+- o backend Python continua sendo o motor de calculo principal
+- a base Android foi criada para isolar a experiencia mobile da camada de algoritmo
+- a implementacao atual privilegia validar o fluxo ponta a ponta antes de uma reorganizacao maior da arquitetura
+
+## Como executar
+
+Em um ambiente Android padrao, a compilacao pode ser feita pelo Gradle do modulo `android`.
 
 Exemplo:
 
-```json
-{
-  "origem": [-8.062742, -34.8739],
-  "destino": [-8.117809, -34.900231],
-  "modo_inicial": "walk",
-  "algoritmo": "dijkstra",
-  "restricao_modal": "bus_com_acesso"
-}
+```bash
+./gradlew assembleDebug
 ```
 
-Campos:
-- `origem`: `[lat, lon]`
-- `destino`: `[lat, lon]`
-- `modo_inicial`: `walk|bike|car|moto|bus|uber_car|uber_moto`
-- `algoritmo`: `dijkstra|astar` (default do motor: `dijkstra`)
-- `restricao_modal`:
-  - `walk`, `bike`, `car`, `moto`, `bus`, `uber_car`, `uber_moto`
-  - `bus_com_acesso` (permite walk + bus com regra de uso de onibus)
-
-### 5.2 Saida (`output.json`)
-
-Estrutura retornada:
-
-```json
-{
-  "edges": [
-    {
-      "modo": "walk",
-      "origem": [-8.06, -34.87],
-      "destino": [-8.07, -34.88],
-      "distancia": 0.41,
-      "tempo": 0.08,
-      "custo": 0.0,
-      "risco": 0.003,
-      "peso": 0.12
-    }
-  ],
-  "segments": [
-    {
-      "modo": "walk",
-      "tempo": 0.32,
-      "distancia": 1.63,
-      "custo": 0.0,
-      "risco_medio": 0.004
-    }
-  ],
-  "resumo": {
-    "tempo_total": 1.7232,
-    "custo_total": 0.0,
-    "distancia_total": 8.6158,
-    "risco_medio": 0.003,
-    "velocidade_media_total": 5.0
-  }
-}
-```
-
----
-
-## 6. Pipeline de Calculo (Passo a Passo)
-
-O `main.py` executa este fluxo:
-
-1. Le `input.json`
-2. Carrega CSVs de dados (risco, velocidade, custos)
-3. Calcula perfis de risco por modal
-4. Configura calculadora de custo
-5. Busca clima (Open-Meteo) e calcula fatores (`rain_factor`, `tide_factor`)
-6. Carrega ou constroi o grafo multimodal (OSMnx + cache)
-7. Integra GTFS de onibus quando disponivel
-8. Encontra no de origem e no de destino
-9. Calcula parametros de normalizacao min-max
-10. Executa `dijkstra` ou `astar`
-11. Reconstrui arestas e segmentos
-12. Salva `output.json`
-
----
-
-## 7. Como o Sistema Faz o Calculo
-
-### 7.1 Funcao objetivo (multiobjetivo)
-
-Para cada aresta candidata:
-
-```text
-tempo_base = distancia_km / velocidade_kmh
-tempo_final = tempo_base * rain_factor * tide_factor
-
-custo = funcao_por_modal(modal, distancia_km, tempo_min, velocidade, clima)
-
-risco_base = risco_do_modal_ajustado_por_clima
-risco = risco_base * distancia_km / 10
-
-tempo_norm = normalize(tempo_final)
-custo_norm = normalize(custo)
-risco_norm = normalize(risco)
-
-peso = 0.5 * tempo_norm + 0.3 * custo_norm + 0.2 * risco_norm
-```
-
-Resumo:
-- **tempo** aumenta com distancia, chuva e mare
-- **custo** depende do modal (tarifa, combustivel ou regra Uber)
-- **risco** vem da combinacao crime + acidente, ajustado por clima
-
-### 7.2 Normalizacao
-
-Como tempo, custo e risco estao em escalas diferentes, o projeto aplica Min-Max:
-
-```text
-norm = (valor - min) / (max - min)
-```
-
-Isso evita que uma metrica domine a decisao so por ter numeros maiores.
-
----
-
-## 8. Dijkstra x A* (como explicar)
-
-### 8.1 Estado de busca
-
-Nos dois algoritmos, o estado e:
-
-```text
-(node_id, modal_atual, used_bus)
-```
-
-- `node_id`: no do grafo
-- `modal_atual`: modal usado para chegar naquele estado
-- `used_bus`: flag para validar cenarios com obrigatoriedade de bus
-
-### 8.2 Dijkstra
-
-O Dijkstra usa apenas custo acumulado real:
-
-```text
-prioridade = g(n)
-```
-
-- garante otimo para pesos nao negativos
-- tende a expandir mais estados
-- usado como padrao do projeto
-
-### 8.3 A*
-
-O A* usa custo acumulado + heuristica:
-
-```text
-prioridade = f(n) = g(n) + h(n)
-```
-
-Heuristica implementada:
-- distancia em linha reta entre no atual e destino
-- dividida pela maior velocidade disponivel
-- normalizada para a mesma escala
-
-Na pratica:
-- normalmente visita menos estados que Dijkstra
-- costuma ser mais rapido
-- mantem qualidade de rota quando a heuristica e bem comportada
-
-### 8.4 Quando usar cada um
-
-- Use `dijkstra` quando quiser comportamento mais conservador e baseline.
-- Use `astar` quando quiser reduzir tempo de busca em grafos grandes.
-
----
-
-## 9. Regras de Modais e Restricoes
-
-### 9.1 Trocas de modal
-
-Quando a viagem inicia em `walk`, o motor permite embarcar em:
-- `bus`, `uber_car`, `uber_moto`, `bike`
-
-Tambem permite descer para `walk` ao final.
-
-### 9.2 `bus_com_acesso`
-
-Modo especial para onibus com acesso/egresso a pe:
-- modais permitidos: `walk` e `bus`
-- rota so e valida se usar `bus` em algum trecho
-- limite por aresta de caminhada: `0.5 km`
-- penalidade no peso para aresta walk: `x1.4`
-
----
-
-## 10. GTFS e Onibus
-
-Quando os arquivos GTFS estao presentes em `data/bus_gtfs`, o sistema integra:
-- `stops.txt`
-- `stop_times.txt`
-- `trips.txt`
-- `routes.txt`
-
-Com isso, o grafo inclui:
-- nos de parada
-- arestas de bus entre paradas consecutivas
-- conexao de rua <-> parada por walk
-
-Se faltar parte do GTFS, o sistema usa fallback para manter o calculo funcionando.
-
----
-
-## 11. API para Recalculo
-
-### 11.1 `POST /api/calculate`
-
-Recalcula a rota com os parametros enviados e retorna o novo `output.json`.
-
-Payload exemplo:
-
-```json
-{
-  "origem": [-8.062742, -34.8739],
-  "destino": [-8.117809, -34.900231],
-  "modo_inicial": "walk",
-  "algoritmo": "astar",
-  "restricao_modal": "bus_com_acesso"
-}
-```
-
-### 11.2 `POST /api/options`
-
-Executa varios cenarios (walk_only, bike_only, car_only etc.), calcula score comparativo e retorna ranking das opcoes.
-
----
-
-## 12. Estrutura de Pastas (resumo)
-
-```text
-android/           app Android nativo com Kotlin/Compose
-backend/           API FastAPI e endpoints locais
-graph/             construcao e cache do grafo multimodal
-loaders/           carga de CSV, clima e dados auxiliares
-routing/           Dijkstra, A* e reconstrucao da rota
-data/              dados de entrada do motor
-documentation/     planos, guias e material de apoio
-main.py            orquestrador do motor
-input.json         entrada da simulacao
-output.json        saida gerada pela execucao
-```
-
----
-
-## 13. Dependencias
-
-Python:
-- `osmnx`, `networkx`
-- `pandas`, `numpy`, `geopandas`
-- `requests`, `folium`
-- `fastapi`, `uvicorn`, `pydantic` (backend)
-
-Android:
-- `kotlin`
-- `jetpack compose`
-- `coil` para carregamento dos tiles do mapa
-
----
-
-## 14. Troubleshooting Rapido
-
-1. Erro `No module named pandas`
-   - instalar dependencias com `pip install -r requirements.txt`
-
-2. Erro `uvicorn nao reconhecido`
-   - usar `python -m uvicorn backend.app.main:app --reload --port 8000`
-
-3. Front sem resposta de calculo
-   - confirmar backend ativo na porta 8000
-   - testar `GET /api/health`
-
-4. Avisos de arquivos em `data/` ausentes
-   - o sistema possui fallback em varios pontos, mas com dados completos o resultado fica mais realista
-
----
-
-## 15. API (contrato e fluxo)
-
-Base URL local: `http://localhost:8000`
-
-### Endpoints
-
-- `GET /api/health`
-  - verifica se o backend esta vivo e se `input.json`/`output.json` existem
-- `GET /api/route`
-  - retorna o ultimo `output.json`
-- `POST /api/calculate`
-  - dispara o calculo do motor (`main.py`) e retorna o novo resultado
-- `POST /api/options`
-  - executa cenarios predefinidos e retorna ranking de opcoes
-
-### Regras principais do backend
-
-- `input.json` e `output.json` ficam na raiz do projeto.
-- o backend executa `main.py` via subprocess e captura `stdout/stderr`.
-- o ranking usa os mesmos pesos do motor: tempo 0.5, custo 0.3, risco 0.2.
-
----
-
-## 16. Como o grafo e usado
-
-O grafo multimodal e um `MultiDiGraph` (NetworkX), onde:
-
-- Nos: intersecoes das ruas (OSM) e paradas de onibus (GTFS).
-- Arestas: deslocamentos por modal, com atributos de distancia, velocidade, custo, risco e peso.
-
-Regras importantes:
-
-- As arestas sao replicadas para modais (`walk`, `bike`, `car`, `moto`, `uber_car`, `uber_moto`).
-- `bus` entra via GTFS como arestas entre paradas consecutivas.
-- A* e Dijkstra trabalham no mesmo grafo e na mesma funcao de custo.
-
----
-
-## 17. Tecnologias usadas
-
-Backend e motor:
-
-- Python 3
-- FastAPI + Uvicorn
-- NetworkX
-- OSMnx
-- Pandas, NumPy, GeoPandas
-- Requests
-
-Dados:
-
-- OpenStreetMap (OSMnx)
-- GTFS (stops, stop_times, trips, routes)
-- CSVs locais (crime, acidentes, velocidade, custos, alagamento)
-
----
-
-## 18. O que pode ser reutilizado e melhorado
-
-### Reutilizar
-
-- Motor multimodal (`main.py` + `graph/` + `routing/`)
-- API para consumo do motor (`backend/`)
-- Contrato de entrada/saida via JSON (`input.json` e `output.json`)
-- Cache de grafo multimodal (`output/.graph_cache/`)
-
-### Melhorar
-
-- Integrar cache do base_graph OSMnx no fluxo principal (ja existe utilitario).
-- Consolidar uso de `weather_factors.csv` e `tide_factors.csv` no lugar de regra fixa.
-- Aplicar `flood_risk_streets.csv` diretamente no peso final da aresta.
-- Criar testes automatizados para custo, risco, normalizacao e algoritmos.
-- Definir benchmarks e comparar Dijkstra x A* em diferentes cenarios.
-
----
-
-## 19. Documentos de apoio
-
-- [documentation/ARCHITECTURE.md](documentation/ARCHITECTURE.md)
-- [documentation/FUNCIONAMENTO_ATUAL.md](documentation/FUNCIONAMENTO_ATUAL.md)
-- [documentation/GUIA_IMPLEMENTACAO_MELHORIAS.md](documentation/GUIA_IMPLEMENTACAO_MELHORIAS.md)
-- [documentation/QUICKSTART.md](documentation/QUICKSTART.md)
-- [documentation/WEB_QUICKSTART.md](documentation/WEB_QUICKSTART.md)
-- [documentation/SUMMARY.md](documentation/SUMMARY.md)
-
----
-
-#
+Para testar o fluxo completo, o backend FastAPI precisa estar rodando localmente na porta 8000.
