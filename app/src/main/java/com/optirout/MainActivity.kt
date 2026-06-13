@@ -9,7 +9,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            OptiRoutTheme {
+            OptiRoutTheme(dynamicColor = false) {
                 OptiRoutApp()
             }
         }
