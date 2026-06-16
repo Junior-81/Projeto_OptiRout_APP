@@ -315,7 +315,8 @@ private fun modeColor(mode: String): Color = when (mode.lowercase()) {
     "bus" -> Color(0xFF42A5F5)
     "walk" -> Color(0xFF66BB6A)
     "car" -> Color(0xFFAB47BC)
-    "uber" -> Color(0xFFFFCA28)
+    "uber_car" -> Color(0xFFFFCA28)
+    "uber_moto" -> Color(0xFF28F8FF)
     else -> Color(0xFF90A4AE)
 }
 
@@ -324,7 +325,8 @@ private fun modeDisplayName(mode: String): String = when (mode.lowercase()) {
     "bus" -> "Ônibus"
     "walk" -> "A pé"
     "car" -> "Carro"
-    "uber" -> "Uber"
+    "uber_car" -> "Uber"
+    "uber_moto" -> "Uber Moto"
     else -> mode.replaceFirstChar { it.uppercaseChar() }
 }
 

@@ -13,9 +13,14 @@ enum class TransportMode(
         description = "Combinação inteligente de modais para o trajeto mais eficiente entre a origem e o destino.",
     ),
     UBER(
-        apiValue = "uber",
+        apiValue = "uber_car",
         displayName = "Uber",
         description = "Solicite um carro via Uber. Ideal para conforto e praticidade sem preocupação com estacionamento.",
+    ),
+    UBER_MOTO(
+        apiValue = "uber_moto",
+        displayName = "Uber Moto",
+        description = "Solicite uma moto via Uber. Ideal para valocidade e praticidade sem preocupação com trânsito.",
     ),
     WALK(
         apiValue = "walk",
